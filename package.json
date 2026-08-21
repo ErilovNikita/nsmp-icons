@@ -8,6 +8,10 @@
     "type": "git",
     "url": "https://github.com/ErilovNikita/nsmp-icons.git"
   },
+  "homepage": "https://github.com/ErilovNikita/nsmp-icons#readme",
+  "bugs": {
+    "url": "https://github.com/ErilovNikita/nsmp-icons/issues"
+  },
   "keywords": [
     "icons",
     "svg",
