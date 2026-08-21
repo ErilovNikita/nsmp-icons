@@ -1,0 +1,21 @@
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# Generated package entrypoints
+/src/index.js
+/src/vue/
+
+# Package-manager logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local tooling and environment files
+.vscode/
+.idea/
+.env
+.env.*
+!.env.example

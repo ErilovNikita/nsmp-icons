@@ -1,0 +1,40 @@
+{
+  "name": "nsmp-icons",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "SVG icon library for NSMP applications",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ErilovNikita/nsmp-icons.git"
+  },
+  "keywords": [
+    "icons",
+    "svg",
+    "nsmp"
+  ],
+  "files": [
+    "icons/*.svg",
+    "src/**/*.js",
+    "LICENSE",
+    "README.md",
+    "preview.png"
+  ],
+  "scripts": {
+    "generate:index": "node scripts/generate-index.mjs",
+    "prepack": "npm run generate:index"
+  },
+  "exports": {
+    ".": "./src/index.js",
+    "./vue": "./src/vue/index.js",
+    "./vue/*": "./src/vue/*.js",
+    "./icons/*.svg": "./icons/*.svg"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.0"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  }
+}
