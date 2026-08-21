@@ -15,14 +15,14 @@ npm install nsmp-icons
 Иконки можно импортировать по именам одним named import. Сборщик включит в итоговый бандл только реально используемые иконки:
 
 ```js
-import { AddCall, ZoomIn } from "nsmp-icons";
+import { AddCallIcon, ZoomInIcon } from "nsmp-icons";
 
 const addCallImage = document.createElement("img");
-addCallImage.src = AddCall;
+addCallImage.src = AddCallIcon;
 addCallImage.alt = "";
 
 const zoomInImage = document.createElement("img");
-zoomInImage.src = ZoomIn;
+zoomInImage.src = ZoomInIcon;
 zoomInImage.alt = "";
 ```
 
@@ -30,12 +30,12 @@ zoomInImage.alt = "";
 
 ```vue
 <script setup>
-import { AddCall, ZoomIn } from "nsmp-icons/vue";
+import { AddCallIcon, ZoomInIcon } from "nsmp-icons/vue";
 </script>
 
 <template>
-	<AddCall class="icon" alt="Добавить вызов" />
-	<ZoomIn width="20" height="20" />
+	<AddCallIcon class="icon" alt="Добавить вызов" />
+	<ZoomInIcon width="20" height="20" />
 </template>
 ```
 
