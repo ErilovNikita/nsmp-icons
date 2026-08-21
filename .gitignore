@@ -5,6 +5,7 @@ node_modules/
 
 # Generated package entrypoints
 /src/index.js
+/src/*.d.ts
 /src/vue/
 
 # Package-manager logs

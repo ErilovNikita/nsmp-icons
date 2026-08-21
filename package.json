@@ -20,6 +20,7 @@
   "files": [
     "icons/*.svg",
     "src/**/*.js",
+    "src/**/*.d.ts",
     "LICENSE",
     "README.md",
     "preview.png"
@@ -29,11 +30,24 @@
     "prepack": "npm run generate:index"
   },
   "exports": {
-    ".": "./src/index.js",
-    "./vue": "./src/vue/index.js",
-    "./vue/*": "./src/vue/*.js",
-    "./icons/*.svg": "./icons/*.svg"
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./vue": {
+      "types": "./src/vue/index.d.ts",
+      "import": "./src/vue/index.js"
+    },
+    "./vue/*": {
+      "types": "./src/vue/*.d.ts",
+      "import": "./src/vue/*.js"
+    },
+    "./icons/*.svg": {
+      "types": "./src/icons.d.ts",
+      "default": "./icons/*.svg"
+    }
   },
+  "types": "./src/index.d.ts",
   "peerDependencies": {
     "vue": "^3.3.0"
   },
