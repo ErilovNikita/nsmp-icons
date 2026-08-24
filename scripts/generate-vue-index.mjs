@@ -3,20 +3,43 @@ const createIconSource = `import { defineComponent, h } from "vue";
 export function createIcon(source, name) {
   return defineComponent({
     name,
+    props: {
+      color: String,
+    },
     inheritAttrs: false,
-    setup(_, { attrs }) {
-      return () => h("img", {
-        ...attrs,
-        src: source,
-        alt: attrs.alt ?? "",
+    setup(props, { attrs }) {
+      const { alt, ...restAttrs } = attrs;
+
+      return () => h("span", {
+        ...restAttrs,
+        role: alt ? "img" : undefined,
+        "aria-label": alt,
+        "aria-hidden": alt ? undefined : "true",
+        style: [
+          {
+            display: "inline-block",
+            width: restAttrs.width ? \`\${restAttrs.width}\${/^\\d+$/.test(restAttrs.width) ? "px" : ""}\` : "16px",
+            height: restAttrs.height ? \`\${restAttrs.height}\${/^\\d+$/.test(restAttrs.height) ? "px" : ""}\` : "16px",
+            backgroundColor: props.color || "currentColor",
+            maskImage: \`url(\${source})\`,
+            maskRepeat: "no-repeat",
+            maskPosition: "center",
+            maskSize: "contain",
+            WebkitMaskImage: \`url(\${source})\`,
+            WebkitMaskRepeat: "no-repeat",
+            WebkitMaskPosition: "center",
+            WebkitMaskSize: "contain",
+          },
+          restAttrs.style,
+        ],
       });
     },
   });
 }
 `;
 
-const createIconTypes = 'import type { DefineComponent } from "vue";\n\nexport declare function createIcon(source: string, name: string): DefineComponent;\n';
-const componentTypes = 'import type { DefineComponent } from "vue";\n\ndeclare const component: DefineComponent;\nexport { component as default };\n';
+const createIconTypes = 'import type { DefineComponent } from "vue";\n\nexport declare function createIcon(source: string, name: string): DefineComponent<{ color?: string }>;\n';
+const componentTypes = 'import type { DefineComponent } from "vue";\n\ndeclare const component: DefineComponent<{ color?: string }>;\nexport { component as default };\n';
 
 export function generateVueIndex(iconFiles) {
   return (
